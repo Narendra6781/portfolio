@@ -1,191 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Narendra Kumar | Python & SQL Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Narendra Kumar | Python & Web Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --primary: #2e286f;
+      --accent: #6a45ff;
+      --bg: #1d1933;
+      --card-bg: rgba(255,255,255,0.07);
+      --shadow: 0 8px 24px rgba(42, 21, 120, 0.18);
     }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #1f1c2c, #928dab);
-      color: #ffffff;
-      scroll-behavior: smooth;
-    }
-
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      animation: fadeDown 1s ease-in-out;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    nav {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    nav a {
-      margin: 0 1rem;
+      background: var(--bg);
       color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      margin: 0;
     }
-
-    nav a:hover {
+    header.hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(105deg, #221d43 60%, #5329b8 100%);
+      overflow: hidden;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeDown 1s ease-in;
+    }
+    .hero-content .highlight {
+      color: var(--accent);
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s, transform 1s;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #e2e2ea;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 1s, transform 1s;
+    }
+    .hero-links a {
+      margin: 0 0.7em;
       color: #f9d423;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1.08em;
+      transition: color 0.25s;
     }
-
-    section {
-      padding: 3rem 2rem;
-      animation: fadeUp 1s ease-in-out;
+    .cta-bounce {
+      display: inline-block;
+      padding: 0.7em 2em;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(to right, var(--accent) 60%, #39e6a8);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.12em;
+      animation: bounce 1.5s infinite;
+      box-shadow: var(--shadow);
+      margin-top: 1.1rem;
     }
-
-    .section-title {
+    .shape-animation {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at top left, #ffffff33 0%, transparent 60%),
+      radial-gradient(ellipse at bottom right, #ffb0f633 0%, transparent 60%);
+      opacity: 0.6;
+      animation: gradientMove 8s linear infinite;
+      z-index: 1;
+    }
+    @keyframes gradientMove {
+      0%{background-position:0 0,100% 100%;}
+      100%{background-position:100% 0,0 100%;}
+    }
+    nav {
+      background: var(--primary);
+      padding: 1em 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    nav a {
+      margin: 0 1.1em;
+      color: #ffedef;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1.07em;
+      transition: color 0.25s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    .section {
+      padding: 56px 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,2,.6,1) 0.4s, transform 0.7s cubic-bezier(.4,2,.6,1) 0.4s;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2.section-title {
       font-size: 2rem;
-      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+      margin-bottom: 1.2rem;
+      color: #fae2ff;
       border-bottom: 2px solid #f9d423;
       display: inline-block;
       padding-bottom: 0.3rem;
     }
-
+    .info-contact {
+      margin: 1.2em 0;
+      color: #eee;
+      font-size: 1.01em;
+    }
     .skills, .certifications {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
-
-    .skill, .certification {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      transition: transform 0.3s;
+    .skill-card, .certification-card {
+      background: var(--card-bg);
+      padding: 0.8rem 1.3rem;
+      border-radius: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
     }
-
-    .skill:hover, .certification:hover {
-      transform: scale(1.05);
+    .skill-card:hover, .certification-card:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 24px #39e6a857;
     }
-
-    .project {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 1rem;
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      padding: 1.2em 1em;
+      min-width: 210px;
+      flex: 1 1 260px;
+      margin: 1em 0.5em 1em 0;
+      transition: transform 0.44s cubic-bezier(.4,2,.6,1);
+      opacity: 0;
+      transform: scale(0.92) translateY(50px);
+    }
+    .project-card.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      transition-delay: 0.13s;
+    }
+    .edu-list, .extra-list {
+      margin-left: 1.15em;
+      margin-bottom: 0.8em;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 390px;
+      gap: 1em;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.8em 1em;
+      font: inherit;
+      border: none;
       border-radius: 10px;
-      margin-bottom: 2rem;
+      background: #240b42;
+      color: #fff;
+      font-size: 1em;
     }
-
+    .contact-form button {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.8em 1em;
+      border: none;
+      border-radius: 18px;
+      font-weight: 600;
+      font-size: 1em;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.35s;
+    }
+    .contact-form button:hover {
+      background: #4724d9;
+      box-shadow: 0 12px 34px #4b2dda44;
+    }
     footer {
       text-align: center;
-      padding: 2rem;
-      background: #1f1c2c;
-      font-size: 0.9rem;
-      color: #aaa;
+      padding: 2rem 0 1.2rem 0;
+      background: #221d43;
+      color: #c2bcf7;
+      font-size: 1em;
+      margin-top: 3em;
     }
-
-    .links a {
-      margin: 0 0.5rem;
-      color: #f9d423;
-      text-decoration: none;
-    }
-
     @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity:0; transform: translateY(-50px);}
+      to { opacity:1; transform: translateY(0);}
     }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-12px);}
+    }
+    @media (max-width: 760px) {
+      .skills, .certifications { flex-direction: column;gap: .4em;}
+      .hero-content h1 { font-size:2.1rem;}
+      h2.section-title { font-size:1.26rem;}
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Narendra Kumar</h1>
-    <p>Python & SQL Developer | Fresher | Lifelong Learner</p>
-    <div class="links">
-      <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">LinkedIn</a>
-      <a href="https://github.com/YOUR-GITHUB" target="_blank">GitHub</a>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span class="highlight">Narendra Kumar</span></h1>
+      <p>Python & Web Developer | B.Tech CSE | Lifelong Learner </p>
+      <div class="hero-links">
+        <a href="mailto:kumarbnarendra968@gmail.com">kumarbnarendra968@gmail.com</a> | 
+        <a href="tel:+916301070113">+91 6301070113</a>
+      </div>
+      <p class="info-contact">Guntur, Andhra Pradesh, India</p>
+      <a href="#projects" class="cta-bounce">View Projects ↓</a>
     </div>
+    <div class="shape-animation"></div>
   </header>
 
   <nav>
     <a href="#about">About</a>
+    <a href="#education">Education</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
     <a href="#certifications">Certifications</a>
+    <a href="#projects">Project</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <section id="about">
-    <h2 class="section-title">About Me</h2>
-    <p>I'm a B.Tech Computer Science student from Vignan University with a passion for building real-world solutions. I have a strong foundation in Python, SQL, and Web Technologies. As a fresher, I’m excited to learn and grow in the software industry.</p>
+  <section id="about" class="section fade-scroll">
+    <h2 class="section-title">Professional Summary</h2>
+    <p>
+      Self-motivated and technically proficient B.Tech Computer Science student with a solid foundation in programming and software development.
+      Skilled in Python, with strong understanding of object-oriented programming, data structures, and algorithms.
+      Passionate about building innovative, user-friendly applications and solutions to real-world problems.
+      Seeking a Software Engineer role to apply technical skills, contribute to meaningful projects, and grow within a dynamic, collaborative environment.
+    </p>
   </section>
 
-  <section id="skills">
+  <section id="education" class="section fade-scroll">
+    <h2 class="section-title">Education</h2>
+    <ul class="edu-list">
+      <li>
+        <strong>Bachelor of Technology in Computer Science and Engineering</strong><br />
+        Vignan's Foundation for Science and Technology (Vignan University), 2022 &ndash; 2026 <br />
+        CGPA: 7.5
+      </li>
+      <li>
+        <strong>Intermediate (MPC)</strong><br />
+        Narayana Junior College, 2020 &ndash; 2022 <br />
+        Percentage: 75%
+      </li>
+      <li>
+        <strong>SSC (10th)</strong><br />
+        Narayana EM School, 2020 <br />
+        Percentage: 96%
+      </li>
+    </ul>
+  </section>
+
+  <section id="skills" class="section fade-scroll">
     <h2 class="section-title">Skills</h2>
     <div class="skills">
-      <div class="skill">Python</div>
-      <div class="skill">SQL</div>
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">OOPs</div>
-      <div class="skill">Computer Networks</div>
-      <div class="skill">Problem-Solving</div>
+      <div class="skill-card">Python</div>
+      <div class="skill-card">C</div>
+      <div class="skill-card">HTML</div>
+      <div class="skill-card">CSS</div>
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">SQL</div>
+      <div class="skill-card">OOPs</div>
+      <div class="skill-card">Computer Networks</div>
+      <div class="skill-card">Problem-Solving</div>
     </div>
   </section>
 
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="project">
-      <h3>Chronic Kidney Disease Prediction</h3>
-      <p><strong>Tech Used:</strong> Python, Scikit-learn, TensorFlow, CNN, Random Forest</p>
-      <p>Developed a machine learning model to predict CKD using clinical data. Achieved 90.4% accuracy with SVD. The system helps doctors with early diagnosis and treatment planning.</p>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <h2 class="section-title">Certifications</h2>
+  <section id="certifications" class="section fade-scroll">
+    <h2 class="section-title">Courses & Certifications</h2>
     <div class="certifications">
-      <div class="certification">Google Cybersecurity Professional Certificate</div>
-      <div class="certification">Cisco Python 1</div>
-      <div class="certification">Cisco Python 2</div>
-      <div class="certification">Cisco Networking Basics</div>
+      <div class="certification-card">Google Cybersecurity Professional Certificate</div>
+      <div class="certification-card">Cisco Python 1</div>
+      <div class="certification-card">Cisco Python 2</div>
+      <div class="certification-card">Cisco Networking Basics</div>
     </div>
+  </section>
+
+  <section id="projects" class="section fade-scroll">
+    <h2 class="section-title">Academic Project</h2>
+    <div class="project-card">
+      <h3>Chronic Kidney Disease Prediction with Machine Learning</h3>
+      <p><strong>Published:</strong> ITM Web of Conferences, Vol. 74, 2025 | <em>DOI available</em></p>
+      <p>
+        <strong>Tech Used:</strong> Python, Scikit-learn, TensorFlow, CNN, Random Forest, KNN, SVM
+      </p>
+      <ul>
+        <li>Predicted early CKD using real clinical data and machine learning models.</li>
+        <li>Tested Random Forest, KNN, SVM, and CNN algorithms—Random Forest had top results for early detection.</li>
+        <li>Built recommendation models; SVD achieved 90.4% accuracy.</li>
+        <li>Project enabled ML-based support for early diagnosis and better treatment planning for doctors.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="section fade-scroll">
+    <h2 class="section-title">Contact</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required/>
+      <input type="email" placeholder="Your Email" required/>
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <ul class="extra-list">
+      <li>SAC (Student Activity Council), Vignan University, 2023</li>
+    </ul>
   </section>
 
   <footer>
-    &copy; 2025 Narendra Kumar. All rights reserved.
+    <p>&copy; 2025 Narendra Kumar. All rights reserved.</p>
   </footer>
+  <script>
+    // Animate hero and skills on load
+    window.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('.hero-content h1').style.opacity = 1;
+      document.querySelector('.hero-content h1').style.transform = "translateY(0)";
+      setTimeout(() => {
+        document.querySelector('.hero-content p').style.opacity = 1;
+        document.querySelector('.hero-content p').style.transform = "translateY(0)";
+      }, 400);
+      document.querySelectorAll('.skill-card, .certification-card').forEach((el, i) => {
+        setTimeout(() => {
+          el.style.opacity = 1;
+          el.style.transform = "translateY(0) scale(1)";
+        }, 1000 + i * 100);
+      });
+    });
+    // IntersectionObserver for fade-in sections and projects
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.classList.contains('project-card')) {
+              setTimeout(() => entry.target.classList.add('visible'), 150);
+            }
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.fade-scroll').forEach(el => observer.observe(el));
+    document.querySelectorAll('.project-card').forEach(el => observer.observe(el));
+    // Prevent form submission demo
+    document.querySelector('.contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks for your message! (Demo only)');
+    });
+  </script>
 </body>
-
 </html>
