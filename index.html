@@ -1,70 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Narendra's Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Narendra Kumar - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    body {
+      background-color: #f7fafc; /* Professional light background */
+    }
+  </style>
 </head>
-<body>
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <h1>Narendra</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+
+<body class="text-gray-800 font-sans">
+  <header class="bg-white shadow-md p-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Narendra Kumar</h1>
+      <nav class="space-x-6">
+        <a href="#about" class="hover:text-blue-500">About</a>
+        <a href="#skills" class="hover:text-blue-500">Skills</a>
+        <a href="#project" class="hover:text-blue-500">Project</a>
+        <a href="#certifications" class="hover:text-blue-500">Certifications</a>
+        <a href="#contact" class="hover:text-blue-500">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2>Hello, I'm Narendra</h2>
-    <p>A passionate Web Developer</p>
-    <a href="#projects" class="btn">View My Work</a>
+  <section id="about" class="py-20">
+    <div class="container mx-auto text-center" data-sr>
+      <h2 class="text-3xl font-bold mb-4">About Me</h2>
+      <p class="text-lg max-w-2xl mx-auto">I'm a fresher and aspiring Python & SQL Developer, passionate about problem-solving, backend logic, and learning new technologies to build impactful applications.</p>
+    </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a front-end web developer with a passion for creating clean, responsive, and user-friendly websites. I love turning ideas into reality through code.
-    </p>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Project 1</h3>
-        <p>A short description of the project goes here.</p>
-      </div>
-      <div class="project-card">
-        <h3>Project 2</h3>
-        <p>A short description of the project goes here.</p>
+  <section id="skills" class="py-20 bg-gray-100">
+    <div class="container mx-auto" data-sr>
+      <h2 class="text-3xl font-bold text-center mb-10">Skills</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="p-4 bg-white rounded shadow">Python</div>
+        <div class="p-4 bg-white rounded shadow">SQL</div>
+        <div class="p-4 bg-white rounded shadow">HTML</div>
+        <div class="p-4 bg-white rounded shadow">CSS</div>
+        <div class="p-4 bg-white rounded shadow">JavaScript</div>
+        <div class="p-4 bg-white rounded shadow">C</div>
+        <div class="p-4 bg-white rounded shadow">OOPs</div>
+        <div class="p-4 bg-white rounded shadow">Computer Networks</div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
+  <section id="project" class="py-20">
+    <div class="container mx-auto" data-sr>
+      <h2 class="text-3xl font-bold text-center mb-10">Academic Project</h2>
+      <div class="bg-white shadow-md p-6 rounded-lg">
+        <h3 class="text-xl font-semibold mb-2">Chronic Kidney Disease Prediction</h3>
+        <p>Published in ITM Web of Conferences, Vol. 74, 2025. Built with Python, Scikit-learn, TensorFlow, CNN, Random Forest, KNN, SVM. The project predicts CKD using real-world patient data and ML algorithms. Random Forest and SVD gave best results with 90.4% accuracy.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Narendra. All rights reserved.</p>
+  <section id="certifications" class="py-20 bg-gray-100">
+    <div class="container mx-auto" data-sr>
+      <h2 class="text-3xl font-bold text-center mb-10">Certifications</h2>
+      <ul class="list-disc list-inside max-w-xl mx-auto">
+        <li>Google Cybersecurity Professional Certificate</li>
+        <li>Cisco Python 1</li>
+        <li>Cisco Python 2</li>
+        <li>Cisco Networking Basics</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20">
+    <div class="container mx-auto text-center" data-sr>
+      <h2 class="text-3xl font-bold mb-4">Contact</h2>
+      <p>Email: kumarbnarendra968@gmail.com</p>
+      <p>Phone: +91 6301070113</p>
+      <p>Location: Guntur, Andhra Pradesh</p>
+      <div class="mt-4 space-x-4">
+        <a href="https://github.com/" target="_blank" class="text-blue-600 underline">GitHub</a>
+        <a href="https://linkedin.com/in/" target="_blank" class="text-blue-600 underline">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white text-center py-6 shadow-inner">
+    <p>&copy; 2025 Narendra Kumar. All rights reserved.</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    ScrollReveal().reveal('[data-sr]', {
+      duration: 1000,
+      origin: 'bottom',
+      distance: '50px',
+      easing: 'ease-in-out',
+      reset: false
+    });
+  </script>
 </body>
+
 </html>
